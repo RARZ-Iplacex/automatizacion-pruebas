@@ -1,7 +1,7 @@
 pipeline {
 agent any
 
-```
+
 stages {
     stage('Checkout') {
         steps {
@@ -44,6 +44,6 @@ post {
         echo 'El pipeline presentó errores.'
     }
 }
-```
+
 
 }
