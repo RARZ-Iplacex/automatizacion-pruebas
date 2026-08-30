@@ -29,6 +29,16 @@ pipeline {
         stage('Reports') {
             steps {
                 junit 'target/surefire-reports/*.xml'
+
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'target',
+                    reportFiles: 'cucumber-report.html',
+                    reportName: 'Cucumber BDD Report'
+                ])
+
                 archiveArtifacts artifacts: 'target/cucumber-report.html,target/cucumber.json',
                     allowEmptyArchive: true
             }
